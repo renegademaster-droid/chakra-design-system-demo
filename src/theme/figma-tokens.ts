@@ -20,6 +20,7 @@ export const figmaVariableDefs: FigmaVariableDefs = {
   "text/fg_subtle": "#a1a1aa",
   "bg/default": "#ffffff",
   "bg/muted": "#f4f4f5",
+  "bg/panel": "#ffffff",
   "border/default": "#e4e4e7",
 
   // Action bar (Figma → theme.colors.figma.actionBar*)

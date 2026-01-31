@@ -15,7 +15,7 @@ export interface MenuPropsExtended extends MenuProps {}
 
 /**
  * Menu — Chakra UI component, styled by Figma tokens (theme).
- * Uses figma.default, figma.borderDefault, figma.fg, figma.bgSubtle; theme.radii.md.
+ * Uses figma.bgPanel (panel), figma.borderDefault, figma.fg, figma.bgSubtle; theme.radii.sm; shadow from Figma (Shadows light/lg).
  */
 export function Menu(props: MenuPropsExtended) {
   return <ChakraMenu {...props} />;
@@ -31,7 +31,7 @@ export const MenuButton = React.forwardRef<
     borderWidth="1px"
     borderColor="figma.borderDefault"
     color="figma.fg"
-    borderRadius="md"
+    borderRadius="sm"
     _hover={{ bg: "figma.bgSubtle" }}
     _expanded={{ bg: "figma.bgSubtle", borderColor: "figma.fg_muted" }}
     {...props}
@@ -46,12 +46,14 @@ export const MenuList = React.forwardRef<
 >((props, ref) => (
   <ChakraMenuList
     ref={ref}
-    bg="figma.default"
+    bg="figma.bgPanel"
     borderWidth="1px"
     borderColor="figma.borderDefault"
-    borderRadius="md"
+    borderRadius="sm"
     py={1}
-    boxShadow="md"
+    px={2}
+    minW="min"
+    boxShadow="0 8px 16px rgba(24, 24, 27, 0.1), 0 0 1px rgba(24, 24, 27, 0.3)"
     {...props}
   />
 ));
@@ -65,8 +67,10 @@ export const MenuItem = React.forwardRef<
   <ChakraMenuItem
     ref={ref}
     color="figma.fg"
+    fontSize="sm"
     _focus={{ bg: "figma.bgSubtle" }}
     _active={{ bg: "figma.bgSubtle" }}
+    _hover={{ bg: "figma.bgSubtle" }}
     {...props}
   />
 ));
