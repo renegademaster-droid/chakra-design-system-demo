@@ -752,6 +752,71 @@ export function ComponentPages({ pageId }: { pageId: PageId }) {
               <Button colorScheme="warning" label="Warning" />
             </Flex>
           </Section>
+          <Section title="With icons">
+            <Flex gap={4} flexWrap="wrap" direction="row" align="center">
+              <Button
+                colorScheme="teal"
+                leftIcon={
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" aria-hidden>
+                    <path d="M8 2v12M2 8h12" />
+                  </svg>
+                }
+                label="Add item"
+              />
+              <Button
+                colorScheme="teal"
+                variant="outline"
+                rightIcon={
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" aria-hidden>
+                    <path d="M4 6l4 4 4-4" />
+                  </svg>
+                }
+                label="Dropdown"
+              />
+              <Button
+                colorScheme="blue"
+                leftIcon={
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" aria-hidden>
+                    <path d="M14 8H2M2 8l4-4M2 8l4 4" />
+                  </svg>
+                }
+                label="Back"
+              />
+              <Button
+                colorScheme="gray"
+                variant="outline"
+                rightIcon={
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" aria-hidden>
+                    <path d="M2 8h12M14 8l-4-4M14 8l-4 4" />
+                  </svg>
+                }
+                label="Next"
+              />
+              <Button
+                colorScheme="teal"
+                leftIcon={
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" aria-hidden>
+                    <path d="M8 2v8M4 6l4 4 4-4M2 14h12" />
+                  </svg>
+                }
+                label="Download"
+              />
+              <Button
+                colorScheme="teal"
+                variant="ghost"
+                leftIcon={
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" aria-hidden>
+                    <circle cx="8" cy="8" r="6" />
+                    <path d="M8 5v3l2 2" />
+                  </svg>
+                }
+                label="History"
+              />
+            </Flex>
+            <Text fontSize="sm" color="figma.fg_muted" mt={2}>
+              Use <code>leftIcon</code> or <code>rightIcon</code> props to add icons to buttons.
+            </Text>
+          </Section>
           <Section title="Icon button">
             <Flex gap={4} flexWrap="wrap" direction="row" align="center">
               <IconButton
@@ -827,6 +892,11 @@ import { IconButton } from "@chakra-ui/react";
 <Button colorScheme="teal" label="Save" />
 <Button variant="outline" colorScheme="teal" label="Cancel" />
 
+// With icons
+<Button colorScheme="teal" leftIcon={<PlusIcon />} label="Add item" />
+<Button colorScheme="teal" rightIcon={<ChevronDownIcon />} label="Dropdown" />
+
+// Icon-only
 <IconButton aria-label="Add" icon={<AddIcon />} colorScheme="teal" size="md" />`}
             />
           </Section>
