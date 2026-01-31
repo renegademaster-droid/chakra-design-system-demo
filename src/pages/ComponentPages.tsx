@@ -1,6 +1,17 @@
 import {
+  Accordion,
+  ActionBar,
   Button,
   Card,
+  Checkbox,
+  CheckboxCard,
+  Combobox,
+  Dialog,
+  Menu,
+  MenuItem,
+  Pagination,
+  Radio,
+  Slider,
   Input,
   Link,
   Badge,
@@ -24,7 +35,8 @@ import {
   Flex,
   SimpleGrid,
 } from "../design-system";
-import { IconButton } from "@chakra-ui/react";
+import React, { useState } from "react";
+import { IconButton, useDisclosure, RadioGroup } from "@chakra-ui/react";
 import { figmaVariableDefs } from "../theme/figma-tokens";
 import { PageWrapper, Section, CodeBlock } from "./PageWrapper";
 import type { PageId } from "./DocLayout";
@@ -863,6 +875,47 @@ import { IconButton } from "@chakra-ui/react";
         </PageWrapper>
       );
 
+    case "checkbox":
+      return (
+        <PageWrapper title="Checkbox" description="Single or multiple selection. Uses figma.fg, figma.borderDefault; theme.radii.sm.">
+          <Section title="Default">
+            <VStack align="stretch" spacing={3}>
+              <Checkbox>Option one</Checkbox>
+              <Checkbox defaultChecked>Option two (checked)</Checkbox>
+              <Checkbox isDisabled>Disabled</Checkbox>
+            </VStack>
+          </Section>
+          <Section title="Code example">
+            <CodeBlock
+              code={`import { Checkbox } from "../design-system";
+
+<Checkbox>Option one</Checkbox>
+<Checkbox defaultChecked>Option two</Checkbox>`}
+            />
+          </Section>
+        </PageWrapper>
+      );
+
+    case "checkbox-card":
+      return (
+        <PageWrapper title="Checkbox card" description="Card with checkbox. Uses figma.default, figma.borderDefault, figma.fg, figma.fg_muted.">
+          <Section title="Default">
+            <VStack align="stretch" spacing={3} maxW="400px">
+              <CheckboxCard title="Basic plan" description="For individuals and small teams." />
+              <CheckboxCard title="Pro plan" description="For growing teams. Includes analytics." defaultChecked />
+            </VStack>
+          </Section>
+          <Section title="Code example">
+            <CodeBlock
+              code={`import { CheckboxCard } from "../design-system";
+
+<CheckboxCard title="Plan" description="Description." />
+<CheckboxCard title="Plan" defaultChecked />`}
+            />
+          </Section>
+        </PageWrapper>
+      );
+
     case "input":
       return (
         <PageWrapper
@@ -929,6 +982,105 @@ import { IconButton } from "@chakra-ui/react";
 
 <Link href="/docs">Default link</Link>
 <Link href="#" color="figma.fg">Gray link</Link>`}
+            />
+          </Section>
+        </PageWrapper>
+      );
+
+    case "menu":
+      return (
+        <PageWrapper title="Menu" description="Dropdown menu. Uses figma.default, figma.borderDefault, figma.fg, figma.bgSubtle.">
+          <Section title="Default">
+            <Menu>
+              <Menu.Button>
+                Actions <span aria-hidden>▼</span>
+              </Menu.Button>
+              <Menu.List>
+                <MenuItem>Edit</MenuItem>
+                <MenuItem>Duplicate</MenuItem>
+                <Menu.Divider borderColor="figma.borderDefault" />
+                <MenuItem color="figma.fg_error">Delete</MenuItem>
+              </Menu.List>
+            </Menu>
+          </Section>
+          <Section title="Code example">
+            <CodeBlock
+              code={`import { Menu, MenuButton, MenuList, MenuItem } from "../design-system";
+
+<Menu>
+  <Menu.Button>Actions</Menu.Button>
+  <Menu.List>
+    <MenuItem>Edit</MenuItem>
+    <MenuItem>Delete</MenuItem>
+  </Menu.List>
+</Menu>`}
+            />
+          </Section>
+        </PageWrapper>
+      );
+
+    case "pagination": {
+      const PaginationDemo = () => {
+        const [p, setP] = useState(1);
+        return <Pagination page={p} totalPages={5} onPageChange={setP} showPrevNext showFirstLast />;
+      };
+      return (
+        <PageWrapper title="Pagination" description="Page navigation. Uses figma.fg_muted; Button uses theme.">
+          <Section title="Default">
+            <PaginationDemo />
+          </Section>
+          <Section title="Code example">
+            <CodeBlock
+              code={`import { Pagination } from "../design-system";
+
+<Pagination page={1} totalPages={5} onPageChange={setPage} />`}
+            />
+          </Section>
+        </PageWrapper>
+      );
+    }
+
+    case "radio":
+      return (
+        <PageWrapper title="Radio" description="Single selection. Uses figma.fg, figma.borderDefault; theme.radii.full.">
+          <Section title="Default">
+            <RadioGroup defaultValue="1">
+              <VStack align="stretch" spacing={2}>
+                <Radio value="1">Option one</Radio>
+                <Radio value="2">Option two</Radio>
+                <Radio value="3">Option three</Radio>
+              </VStack>
+            </RadioGroup>
+          </Section>
+          <Section title="Code example">
+            <CodeBlock
+              code={`import { Radio, RadioGroup } from "../design-system";
+
+<RadioGroup defaultValue="1">
+  <Radio value="1">Option one</Radio>
+  <Radio value="2">Option two</Radio>
+</RadioGroup>`}
+            />
+          </Section>
+        </PageWrapper>
+      );
+
+    case "slider":
+      return (
+        <PageWrapper title="Slider" description="Range input. Uses figma.bgSubtle (track); teal.500 (filled, thumb).">
+          <Section title="Default">
+            <VStack align="stretch" spacing={6} maxW="320px">
+              <Box>
+                <Text fontSize="sm" color="figma.fg_muted" mb={2}>Default</Text>
+                <Slider defaultValue={50} min={0} max={100} />
+              </Box>
+            </VStack>
+          </Section>
+          <Section title="Code example">
+            <CodeBlock
+              code={`import { Slider } from "../design-system";
+
+<Slider defaultValue={50} min={0} max={100} />`}
             />
           </Section>
         </PageWrapper>
@@ -1069,6 +1221,85 @@ import { IconButton } from "@chakra-ui/react";
 
 <Avatar name="Jane Doe" />
 <Avatar src="/photo.jpg" name="Jane" size="lg" />`}
+            />
+          </Section>
+        </PageWrapper>
+      );
+
+    case "accordion":
+      return (
+        <PageWrapper title="Accordion" description="Expandable sections styled with Figma tokens (figma.fg, figma.bgSubtle, figma.borderDefault).">
+          <Section title="Items">
+            <Accordion
+              items={[
+                { title: "First item", content: "Content for the first accordion panel. Uses figma.fg_muted and figma.bgSubtle." },
+                { title: "Second item", content: "Content for the second panel. Borders use figma.borderDefault; radii from theme.radii.md." },
+                { title: "Third item", content: "Content for the third panel. Button hover/expanded use figma.bgSubtle." },
+              ]}
+            />
+          </Section>
+          <Section title="Accessibility (WCAG 2.1 AA)">
+            <Text fontSize="sm" color="figma.fg_muted" mb={2}>
+              Use a heading level for each trigger (e.g. <code>h2</code>) and ensure focus is visible (2.4.7).
+              Panel content should be associated with the trigger for screen readers.
+            </Text>
+          </Section>
+          <Section title="Code example">
+            <CodeBlock
+              code={`import { Accordion } from "../design-system";
+
+<Accordion
+  items={[
+    { title: "First", content: "Panel content." },
+    { title: "Second", content: "More content." },
+  ]}
+/>`}
+            />
+          </Section>
+        </PageWrapper>
+      );
+
+    case "action-bar":
+      return (
+        <PageWrapper title="Action bar" description="Horizontal bar for primary actions. Uses Figma tokens: figma.actionBarBg, figma.actionBarBorder, figma.actionBarFg.">
+          <Section title="Variants">
+            <VStack align="stretch" spacing={6}>
+              <Box>
+                <Text fontSize="sm" color="figma.fg_muted" mb={2}>Actions at end (default)</Text>
+                <ActionBar justify="end">
+                  <Button colorScheme="teal" variant="outline" label="Cancel" />
+                  <Button colorScheme="teal" label="Save" />
+                </ActionBar>
+              </Box>
+              <Box>
+                <Text fontSize="sm" color="figma.fg_muted" mb={2}>Actions at start</Text>
+                <ActionBar justify="start">
+                  <Button colorScheme="teal" variant="ghost" label="Back" />
+                  <Button colorScheme="teal" label="Next" />
+                </ActionBar>
+              </Box>
+              <Box>
+                <Text fontSize="sm" color="figma.fg_muted" mb={2}>Space between</Text>
+                <ActionBar justify="space-between">
+                  <Button colorScheme="teal" variant="ghost" label="Reset" />
+                  <Button colorScheme="teal" label="Apply" />
+                </ActionBar>
+              </Box>
+            </VStack>
+          </Section>
+          <Section title="Variables (Figma)">
+            <Text fontSize="sm" color="figma.fg_muted" mb={2}>
+              Action bar uses semantic tokens: <code>figma.actionBarBg</code>, <code>figma.actionBarBorder</code>, <code>figma.actionBarFg</code>. Defined in figma-tokens.ts as action-bar/bg, action-bar/border, action-bar/fg (light and dark).
+            </Text>
+          </Section>
+          <Section title="Code example">
+            <CodeBlock
+              code={`import { ActionBar, Button } from "../design-system";
+
+<ActionBar justify="end">
+  <Button colorScheme="teal" variant="outline" label="Cancel" />
+  <Button colorScheme="teal" label="Save" />
+</ActionBar>`}
             />
           </Section>
         </PageWrapper>
@@ -1230,6 +1461,33 @@ import { IconButton } from "@chakra-ui/react";
         </PageWrapper>
       );
 
+    case "combobox":
+      return (
+        <PageWrapper title="Combobox" description="Input with dropdown list. Uses figma.default, figma.borderDefault, figma.fg, figma.bgSubtle.">
+          <Section title="Default">
+            <Combobox
+              options={[
+                { value: "a", label: "Option A" },
+                { value: "b", label: "Option B" },
+                { value: "c", label: "Option C" },
+              ]}
+              placeholder="Select..."
+              maxW="sm"
+            />
+          </Section>
+          <Section title="Code example">
+            <CodeBlock
+              code={`import { Combobox } from "../design-system";
+
+<Combobox
+  options={[{ value: "a", label: "Option A" }, ...]}
+  placeholder="Select..."
+/>`}
+            />
+          </Section>
+        </PageWrapper>
+      );
+
     case "container":
       return (
         <PageWrapper
@@ -1259,6 +1517,49 @@ import { IconButton } from "@chakra-ui/react";
           </Section>
         </PageWrapper>
       );
+
+    case "dialog": {
+      const DialogDemo = () => {
+        const { isOpen, onOpen, onClose } = useDisclosure();
+        return (
+          <>
+            <Button colorScheme="teal" label="Open dialog" onClick={onOpen} />
+            <Dialog
+              title="Dialog title"
+              isOpen={isOpen}
+              onClose={onClose}
+              footer={
+                <HStack spacing={3} justify="flex-end">
+                  <Button colorScheme="teal" variant="outline" label="Cancel" onClick={onClose} />
+                  <Button colorScheme="teal" label="Confirm" onClick={onClose} />
+                </HStack>
+              }
+            >
+              <Text>Dialog body. Uses figma.default, figma.fg, figma.fg_muted.</Text>
+            </Dialog>
+          </>
+        );
+      };
+      return (
+        <PageWrapper title="Dialog" description="Modal dialog. Uses figma.default, figma.borderDefault, figma.fg, figma.fg_muted.">
+          <Section title="Default">
+            <DialogDemo />
+          </Section>
+          <Section title="Code example">
+            <CodeBlock
+              code={`import { Dialog, Button } from "../design-system";
+import { useDisclosure } from "@chakra-ui/react";
+
+const { isOpen, onOpen, onClose } = useDisclosure();
+<Dialog title="Title" isOpen={isOpen} onClose={onClose}>
+  Body content
+  <Dialog.Footer>...</Dialog.Footer>
+</Dialog>`}
+            />
+          </Section>
+        </PageWrapper>
+      );
+    }
 
     case "stack":
       return (

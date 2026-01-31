@@ -22,6 +22,11 @@ export const figmaVariableDefs: FigmaVariableDefs = {
   "bg/muted": "#f4f4f5",
   "border/default": "#e4e4e7",
 
+  // Action bar (Figma → theme.colors.figma.actionBar*)
+  "action-bar/bg": "#f4f4f5",
+  "action-bar/border": "#e4e4e7",
+  "action-bar/fg": "#000000",
+
   // Semantic color tokens (Figma → theme.colors.*.subtle / .muted)
   "red/subtle": "#fee2e2",
   "blue/muted": "#bfdbfe",
@@ -326,6 +331,9 @@ export const figmaDarkVariableDefs: FigmaVariableDefs = {
   "bg/success": "#03190c",
   "bg/info": "#0c142e",
   "border/default": "#27272a",
+  "action-bar/bg": "#18181b",
+  "action-bar/border": "#27272a",
+  "action-bar/fg": "#fafafa",
   "border/subtle": "#111111",
   "border/muted": "#18181b",
   "border/emphasized": "#3f3f46",
