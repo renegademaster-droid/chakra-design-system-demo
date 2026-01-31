@@ -837,9 +837,9 @@ import { IconButton } from "@chakra-ui/react";
       return (
         <PageWrapper
           title="Card"
-          description="Container for content with optional avatar, title, and description."
+          description="Container for content with optional avatar, title, image, and description. Supports outline, elevated, and subtle variants."
         >
-          <Section title="Basic">
+          <Section title="Basic (outline)">
             <SimpleGrid columns={{ base: 1, md: 2 }} spacing={4} minChildWidth="280px">
               <Card title="Card title" description="Card body text. Styled by Figma tokens." />
               <Card
@@ -847,6 +847,60 @@ import { IconButton } from "@chakra-ui/react";
                 avatarName="Jane Doe"
                 title="Lead Designer"
                 description="Design systems and product strategy."
+              />
+            </SimpleGrid>
+          </Section>
+          <Section title="With image">
+            <SimpleGrid columns={{ base: 1, md: 3 }} spacing={4} minChildWidth="240px">
+              <Card
+                imageSrc="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&h=200&fit=crop"
+                imageAlt="Mountain landscape"
+                title="Mountain"
+                description="Beautiful mountain scenery with clouds."
+              />
+              <Card
+                imageSrc="https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=400&h=200&fit=crop"
+                imageAlt="Forest landscape"
+                title="Forest"
+                description="A peaceful forest trail through nature."
+              />
+              <Card
+                imageSrc="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=400&h=200&fit=crop"
+                imageAlt="Beach landscape"
+                title="Beach"
+                description="Tropical beach with white sand and blue water."
+              />
+            </SimpleGrid>
+          </Section>
+          <Section title="Elevated">
+            <SimpleGrid columns={{ base: 1, md: 2 }} spacing={4} minChildWidth="280px">
+              <Card
+                cardVariant="elevated"
+                title="Elevated card"
+                description="No border, prominent shadow for depth."
+              />
+              <Card
+                cardVariant="elevated"
+                imageSrc="https://images.unsplash.com/photo-1519681393784-d120267933ba?w=400&h=200&fit=crop"
+                imageAlt="Snowy mountains"
+                title="Elevated with image"
+                description="Combines image and elevated style."
+              />
+            </SimpleGrid>
+          </Section>
+          <Section title="Subtle">
+            <SimpleGrid columns={{ base: 1, md: 2 }} spacing={4} minChildWidth="280px">
+              <Card
+                cardVariant="subtle"
+                title="Subtle card"
+                description="Muted background, no border or shadow."
+              />
+              <Card
+                cardVariant="subtle"
+                avatarSrc="https://i.pravatar.cc/128?u=2"
+                avatarName="John Smith"
+                title="John Smith"
+                description="Subtle variant with avatar."
               />
             </SimpleGrid>
           </Section>
@@ -861,15 +915,29 @@ import { IconButton } from "@chakra-ui/react";
             <Text fontSize="sm" color="figma.fg_muted" mb={2}>
               Use clear <code>title</code> and <code>description</code> for structure. If the card
               is interactive, use a focusable element (e.g. link or button) with a visible focus
-              indicator (2.4.7).
+              indicator (2.4.7). Provide <code>imageAlt</code> for images.
             </Text>
           </Section>
           <Section title="Code example">
             <CodeBlock
               code={`import { Card } from "../design-system";
 
+// Basic
 <Card title="Card title" description="Card body text." />
-<Card avatarSrc="..." avatarName="Jane" title="Lead" description="..." />`}
+
+// With image
+<Card
+  imageSrc="https://..."
+  imageAlt="Description"
+  title="Title"
+  description="Body text"
+/>
+
+// Elevated
+<Card cardVariant="elevated" title="Elevated" description="..." />
+
+// Subtle
+<Card cardVariant="subtle" title="Subtle" description="..." />`}
             />
           </Section>
         </PageWrapper>
