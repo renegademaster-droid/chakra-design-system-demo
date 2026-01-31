@@ -35,7 +35,7 @@ import {
   Flex,
   SimpleGrid,
 } from "../design-system";
-import React, { useState } from "react";
+import { useState } from "react";
 import { IconButton, useDisclosure, RadioGroup } from "@chakra-ui/react";
 import { figmaVariableDefs } from "../theme/figma-tokens";
 import { PageWrapper, Section, CodeBlock } from "./PageWrapper";

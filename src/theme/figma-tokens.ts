@@ -107,7 +107,7 @@ export const figmaVariableDefs: FigmaVariableDefs = {
   "teal/200": "#99f6e4",
   "teal/300": "#5eead4",
   "teal/400": "#2dd4bf",
-  "teal/500": "#14b8a6",
+  "teal/500": "#b81417",
   "teal/600": "#0d9488",
   "teal/700": "#0c5d56",
   "teal/800": "#114240",

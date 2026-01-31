@@ -75,7 +75,35 @@ export const Accordion = React.forwardRef<HTMLDivElement, AccordionProps>(
 );
 Accordion.displayName = "Accordion";
 
-(Accordion as React.FC & { Item: typeof AccordionItem; Button: typeof AccordionButton; Panel: typeof AccordionPanel; Icon: typeof AccordionIcon }).Item = AccordionItem;
-(Accordion as React.FC & { Item: typeof AccordionItem; Button: typeof AccordionButton; Panel: typeof AccordionPanel; Icon: typeof AccordionIcon }).Button = AccordionButton;
-(Accordion as React.FC & { Item: typeof AccordionItem; Button: typeof AccordionButton; Panel: typeof AccordionPanel; Icon: typeof AccordionIcon }).Panel = AccordionPanel;
-(Accordion as React.FC & { Item: typeof AccordionItem; Button: typeof AccordionButton; Panel: typeof AccordionPanel; Icon: typeof AccordionIcon }).Icon = AccordionIcon;
+(
+  Accordion as unknown as React.FC & {
+    Item: typeof AccordionItem;
+    Button: typeof AccordionButton;
+    Panel: typeof AccordionPanel;
+    Icon: typeof AccordionIcon;
+  }
+).Item = AccordionItem;
+(
+  Accordion as unknown as React.FC & {
+    Item: typeof AccordionItem;
+    Button: typeof AccordionButton;
+    Panel: typeof AccordionPanel;
+    Icon: typeof AccordionIcon;
+  }
+).Button = AccordionButton;
+(
+  Accordion as unknown as React.FC & {
+    Item: typeof AccordionItem;
+    Button: typeof AccordionButton;
+    Panel: typeof AccordionPanel;
+    Icon: typeof AccordionIcon;
+  }
+).Panel = AccordionPanel;
+(
+  Accordion as unknown as React.FC & {
+    Item: typeof AccordionItem;
+    Button: typeof AccordionButton;
+    Panel: typeof AccordionPanel;
+    Icon: typeof AccordionIcon;
+  }
+).Icon = AccordionIcon;
