@@ -107,7 +107,7 @@ export const figmaVariableDefs: FigmaVariableDefs = {
   "teal/200": "#99f6e4",
   "teal/300": "#5eead4",
   "teal/400": "#2dd4bf",
-  "teal/500": "#b81417",
+  "teal/500": "#14b8a6",
   "teal/600": "#0d9488",
   "teal/700": "#0c5d56",
   "teal/800": "#114240",
@@ -255,8 +255,6 @@ export const figmaVariableDefs: FigmaVariableDefs = {
   "Spacing/6": "24",
   "Spacing/7": "28",
   "Spacing/10": "40",
-  "Size/6": "24",
-  "Size/16": "64",
 
   // Breakpoints (Figma → theme.breakpoints) — from get_variable_defs on layout/variables
   "Breakpoint/sm": "480",
