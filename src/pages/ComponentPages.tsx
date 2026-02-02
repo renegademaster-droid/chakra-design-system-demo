@@ -2104,7 +2104,7 @@ const { isOpen, onOpen, onClose } = useDisclosure();
             <HStack spacing={4}>
               <CloseButton />
               <CloseButton size="lg" />
-              <Box p={4} borderWidth="1px" borderColor="figma.borderDefault" borderRadius="md" position="relative">
+              <Box p={4} pr={10} borderWidth="1px" borderColor="figma.borderDefault" borderRadius="md" position="relative" minW="200px">
                 <CloseButton position="absolute" top={2} right={2} />
                 <Text fontSize="sm" color="figma.fg_muted">Card with close</Text>
               </Box>
