@@ -1,39 +1,77 @@
 import {
   Accordion,
   ActionBar,
-  Button,
-  Card,
-  Checkbox,
-  CheckboxCard,
-  Combobox,
-  Dialog,
-  Menu,
-  MenuItem,
-  Pagination,
-  Radio,
-  Slider,
-  Input,
-  Link,
-  Badge,
-  Text,
-  Heading,
-  Avatar,
   Alert,
+  AlertDescription,
   AlertIcon,
   AlertTitle,
-  AlertDescription,
+  AspectRatio,
+  Avatar,
+  Badge,
   Breadcrumb,
   BreadcrumbItem,
   BreadcrumbLink,
   BreadcrumbSeparator,
+  Button,
+  Card,
+  Checkbox,
+  CheckboxCard,
+  CloseButton,
+  Code,
+  Combobox,
+  Dialog,
   Divider,
+  Drawer,
+  DrawerBody,
+  DrawerCloseButton,
+  DrawerContent,
+  DrawerFooter,
+  DrawerHeader,
+  DrawerOverlay,
+  Heading,
+  Image,
+  Input,
+  Kbd,
+  Link,
+  Menu,
+  MenuItem,
+  NumberInput,
+  Pagination,
+  Progress,
+  Radio,
+  Select,
+  SimpleGrid,
+  Skeleton,
+  Slider,
   Spinner,
-  Container,
+  Stat,
+  StatHelpText,
+  StatLabel,
+  StatNumber,
+  Switch,
+  Table,
+  TableContainer,
+  Tbody,
+  Td,
+  Text,
+  Textarea,
+  Th,
+  Thead,
+  Tooltip,
+  Tr,
+  Tag,
+  TagLabel,
+  TagCloseButton,
+  Tabs,
+  TabList,
+  TabPanels,
+  Tab,
+  TabPanel,
   VStack,
   HStack,
   Box,
+  Container,
   Flex,
-  SimpleGrid,
 } from "../design-system";
 import { useState } from "react";
 import { IconButton, useDisclosure, RadioGroup } from "@chakra-ui/react";
@@ -1824,6 +1862,426 @@ const { isOpen, onOpen, onClose } = useDisclosure();
           </Section>
         </PageWrapper>
       );
+
+    case "textarea":
+      return (
+        <PageWrapper title="Textarea" description="Multi-line text input with optional label and error.">
+          <Section title="Default">
+            <Textarea label="Comment" placeholder="Enter your message..." maxW="sm" />
+          </Section>
+          <Section title="With error">
+            <Textarea label="Description" placeholder="..." error="This field is required" maxW="sm" />
+          </Section>
+          <Section title="Code example">
+            <CodeBlock code={`import { Textarea } from "../design-system";
+
+<Textarea label="Comment" placeholder="Enter your message..." />
+<Textarea label="Description" error="This field is required" />`} />
+          </Section>
+        </PageWrapper>
+      );
+
+    case "tooltip":
+      return (
+        <PageWrapper title="Tooltip" description="Brief message on hover or focus.">
+          <Section title="Default">
+            <HStack spacing={4}>
+              <Tooltip label="This is the tooltip content">
+                <Button colorScheme="teal" size="sm" label="Hover me" />
+              </Tooltip>
+              <Tooltip label="Another tooltip" hasArrow>
+                <Text as="span" cursor="help" textDecoration="underline" color="figma.fg_muted">Help</Text>
+              </Tooltip>
+            </HStack>
+          </Section>
+          <Section title="Code example">
+            <CodeBlock code={`import { Tooltip, Button } from "../design-system";
+
+<Tooltip label="Tooltip content">
+  <Button label="Hover me" />
+</Tooltip>`} />
+          </Section>
+        </PageWrapper>
+      );
+
+    case "tabs":
+      return (
+        <PageWrapper title="Tabs" description="Tabbed content panels.">
+          <Section title="Default">
+            <Tabs defaultIndex={0} maxW="md">
+              <TabList>
+                <Tab>One</Tab>
+                <Tab>Two</Tab>
+                <Tab>Three</Tab>
+              </TabList>
+              <TabPanels>
+                <TabPanel>Content for tab one.</TabPanel>
+                <TabPanel>Content for tab two.</TabPanel>
+                <TabPanel>Content for tab three.</TabPanel>
+              </TabPanels>
+            </Tabs>
+          </Section>
+          <Section title="Code example">
+            <CodeBlock code={`import { Tabs, TabList, TabPanels, Tab, TabPanel } from "../design-system";
+
+<Tabs>
+  <TabList>
+    <Tab>One</Tab>
+    <Tab>Two</Tab>
+  </TabList>
+  <TabPanels>
+    <TabPanel>Content one</TabPanel>
+    <TabPanel>Content two</TabPanel>
+  </TabPanels>
+</Tabs>`} />
+          </Section>
+        </PageWrapper>
+      );
+
+    case "switch":
+      return (
+        <PageWrapper title="Switch" description="Toggle on/off with optional label.">
+          <Section title="Default">
+            <VStack align="stretch" spacing={4} maxW="xs">
+              <Switch label="Enable notifications" />
+              <Switch label="Dark mode" defaultChecked />
+              <Switch isDisabled label="Disabled" />
+            </VStack>
+          </Section>
+          <Section title="Code example">
+            <CodeBlock code={`import { Switch } from "../design-system";
+
+<Switch label="Enable notifications" />
+<Switch label="Dark mode" defaultChecked />`} />
+          </Section>
+        </PageWrapper>
+      );
+
+    case "select":
+      return (
+        <PageWrapper title="Select" description="Dropdown select with optional label and error.">
+          <Section title="Default">
+            <Select label="Country" placeholder="Select country" maxW="sm">
+              <option value="fi">Finland</option>
+              <option value="se">Sweden</option>
+              <option value="no">Norway</option>
+            </Select>
+          </Section>
+          <Section title="With error">
+            <Select label="Region" placeholder="Select..." error="Required" maxW="sm">
+              <option value="a">Option A</option>
+            </Select>
+          </Section>
+          <Section title="Code example">
+            <CodeBlock code={`import { Select } from "../design-system";
+
+<Select label="Country" placeholder="Select country">
+  <option value="fi">Finland</option>
+  <option value="se">Sweden</option>
+</Select>`} />
+          </Section>
+        </PageWrapper>
+      );
+
+    case "progress":
+      return (
+        <PageWrapper title="Progress" description="Progress bar indicator.">
+          <Section title="Default">
+            <VStack align="stretch" spacing={4} maxW="sm">
+              <Progress value={40} />
+              <Progress value={75} colorScheme="teal" />
+              <Progress size="sm" value={60} />
+            </VStack>
+          </Section>
+          <Section title="Code example">
+            <CodeBlock code={`import { Progress } from "../design-system";
+
+<Progress value={40} />
+<Progress value={75} colorScheme="teal" />`} />
+          </Section>
+        </PageWrapper>
+      );
+
+    case "skeleton":
+      return (
+        <PageWrapper title="Skeleton" description="Loading placeholder.">
+          <Section title="Default">
+            <VStack align="stretch" spacing={4} maxW="sm">
+              <Skeleton height="20px" />
+              <Skeleton height="40px" />
+              <Skeleton height="80px" borderRadius="md" />
+            </VStack>
+          </Section>
+          <Section title="Code example">
+            <CodeBlock code={`import { Skeleton } from "../design-system";
+
+<Skeleton height="20px" />
+<Skeleton height="80px" borderRadius="md" />`} />
+          </Section>
+        </PageWrapper>
+      );
+
+    case "table":
+      return (
+        <PageWrapper title="Table" description="Data table with styled header and cells.">
+          <Section title="Default">
+            <TableContainer maxW="md" borderWidth="1px" borderColor="figma.borderDefault" borderRadius="md">
+              <Table>
+                <Thead>
+                  <Tr>
+                    <Th>Name</Th>
+                    <Th>Status</Th>
+                  </Tr>
+                </Thead>
+                <Tbody>
+                  <Tr>
+                    <Td>Alice</Td>
+                    <Td>Active</Td>
+                  </Tr>
+                  <Tr>
+                    <Td>Bob</Td>
+                    <Td>Pending</Td>
+                  </Tr>
+                </Tbody>
+              </Table>
+            </TableContainer>
+          </Section>
+          <Section title="Code example">
+            <CodeBlock code={`import { Table, Thead, Tbody, Tr, Th, Td, TableContainer } from "../design-system";
+
+<TableContainer>
+  <Table>
+    <Thead>
+      <Tr><Th>Name</Th><Th>Status</Th></Tr>
+    </Thead>
+    <Tbody>
+      <Tr><Td>Alice</Td><Td>Active</Td></Tr>
+    </Tbody>
+  </Table>
+</TableContainer>`} />
+          </Section>
+        </PageWrapper>
+      );
+
+    case "kbd":
+      return (
+        <PageWrapper title="Kbd" description="Keyboard key styling.">
+          <Section title="Default">
+            <HStack spacing={2} flexWrap="wrap">
+              <Kbd>Ctrl</Kbd>
+              <Kbd>Shift</Kbd>
+              <Kbd>Enter</Kbd>
+              <Text color="figma.fg_muted">Press <Kbd>Ctrl</Kbd> + <Kbd>S</Kbd> to save.</Text>
+            </HStack>
+          </Section>
+          <Section title="Code example">
+            <CodeBlock code={`import { Kbd, Text } from "../design-system";
+
+<Kbd>Ctrl</Kbd>
+<Text>Press <Kbd>Ctrl</Kbd> + <Kbd>S</Kbd> to save.</Text>`} />
+          </Section>
+        </PageWrapper>
+      );
+
+    case "code":
+      return (
+        <PageWrapper title="Code" description="Inline code styling.">
+          <Section title="Default">
+            <Text>Use the <Code>design-system</Code> package. Run <Code>npm install</Code> to install.</Text>
+          </Section>
+          <Section title="Code example">
+            <CodeBlock code={`import { Code, Text } from "../design-system";
+
+<Text>Use the <Code>design-system</Code> package.</Text>`} />
+          </Section>
+        </PageWrapper>
+      );
+
+    case "close-button":
+      return (
+        <PageWrapper title="Close button" description="Dismiss or close trigger.">
+          <Section title="Default">
+            <HStack spacing={4}>
+              <CloseButton />
+              <CloseButton size="lg" />
+              <Box p={4} borderWidth="1px" borderColor="figma.borderDefault" borderRadius="md" position="relative">
+                <CloseButton position="absolute" top={2} right={2} />
+                <Text fontSize="sm" color="figma.fg_muted">Card with close</Text>
+              </Box>
+            </HStack>
+          </Section>
+          <Section title="Code example">
+            <CodeBlock code={`import { CloseButton } from "../design-system";
+
+<CloseButton />
+<CloseButton size="lg" />`} />
+          </Section>
+        </PageWrapper>
+      );
+
+    case "tag":
+      return (
+        <PageWrapper title="Tag" description="Label or chip with optional close.">
+          <Section title="Default">
+            <HStack spacing={3} flexWrap="wrap">
+              <Tag>Teal</Tag>
+              <Tag colorScheme="blue">Blue</Tag>
+              <Tag colorScheme="gray">Gray</Tag>
+              <Tag colorScheme="red">Error</Tag>
+              <Tag size="sm">Small</Tag>
+              <Tag>
+                <TagLabel>With close</TagLabel>
+                <TagCloseButton />
+              </Tag>
+            </HStack>
+          </Section>
+          <Section title="Code example">
+            <CodeBlock code={`import { Tag, TagLabel, TagCloseButton } from "../design-system";
+
+<Tag>Label</Tag>
+<Tag><TagLabel>Removable</TagLabel><TagCloseButton /></Tag>`} />
+          </Section>
+        </PageWrapper>
+      );
+
+    case "number-input":
+      return (
+        <PageWrapper title="Number input" description="Numeric input with stepper.">
+          <Section title="Default">
+            <VStack align="stretch" spacing={4} maxW="xs">
+              <NumberInput label="Quantity" defaultValue={5} min={0} max={100} />
+              <NumberInput label="Amount" defaultValue={0} precision={2} step={0.1} />
+            </VStack>
+          </Section>
+          <Section title="Code example">
+            <CodeBlock code={`import { NumberInput } from "../design-system";
+
+<NumberInput label="Quantity" defaultValue={5} min={0} max={100} />`} />
+          </Section>
+        </PageWrapper>
+      );
+
+    case "stat":
+      return (
+        <PageWrapper title="Stat" description="Statistic display.">
+          <Section title="Default">
+            <SimpleGrid columns={{ base: 1, md: 3 }} spacing={6} maxW="2xl">
+              <Stat>
+                <StatLabel>Total views</StatLabel>
+                <StatNumber>12,345</StatNumber>
+                <StatHelpText>+20% from last month</StatHelpText>
+              </Stat>
+              <Stat>
+                <StatLabel>Active users</StatLabel>
+                <StatNumber>1,234</StatNumber>
+                <StatHelpText>+5% from last week</StatHelpText>
+              </Stat>
+              <Stat>
+                <StatLabel>Conversion</StatLabel>
+                <StatNumber>3.2%</StatNumber>
+                <StatHelpText>Target 4%</StatHelpText>
+              </Stat>
+            </SimpleGrid>
+          </Section>
+          <Section title="Code example">
+            <CodeBlock code={`import { Stat, StatLabel, StatNumber, StatHelpText } from "../design-system";
+
+<Stat>
+  <StatLabel>Total views</StatLabel>
+  <StatNumber>12,345</StatNumber>
+  <StatHelpText>+20% from last month</StatHelpText>
+</Stat>`} />
+          </Section>
+        </PageWrapper>
+      );
+
+    case "image":
+      return (
+        <PageWrapper title="Image" description="Image with optional fallback and border radius.">
+          <Section title="Default">
+            <HStack spacing={4} flexWrap="wrap" align="flex-start">
+              <Image src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=200&h=150&fit=crop" alt="Mountain" boxSize="120px" objectFit="cover" borderRadius="md" />
+              <Image src="https://via.placeholder.com/120" alt="Placeholder" boxSize="120px" borderRadius="md" />
+            </HStack>
+          </Section>
+          <Section title="Code example">
+            <CodeBlock code={`import { Image } from "../design-system";
+
+<Image src="..." alt="Description" boxSize="120px" borderRadius="md" />`} />
+          </Section>
+        </PageWrapper>
+      );
+
+    case "aspect-ratio":
+      return (
+        <PageWrapper title="Aspect ratio" description="Constrain content to an aspect ratio.">
+          <Section title="Default">
+            <SimpleGrid columns={{ base: 1, md: 2 }} spacing={4} maxW="md">
+              <AspectRatio ratio={16 / 9}>
+                <Box bg="figma.muted" borderRadius="md" />
+              </AspectRatio>
+              <AspectRatio ratio={4 / 3}>
+                <Box bg="teal.100" borderRadius="md" />
+              </AspectRatio>
+            </SimpleGrid>
+          </Section>
+          <Section title="Code example">
+            <CodeBlock code={`import { AspectRatio, Box } from "../design-system";
+
+<AspectRatio ratio={16 / 9}>
+  <Box bg="gray.200" />
+</AspectRatio>`} />
+          </Section>
+        </PageWrapper>
+      );
+
+    case "drawer": {
+      const DrawerDemo = () => {
+        const { isOpen, onOpen, onClose } = useDisclosure();
+        return (
+          <>
+            <Button colorScheme="teal" label="Open drawer" onClick={onOpen} />
+            <Drawer placement="right" onClose={onClose} isOpen={isOpen} size="md">
+              <DrawerOverlay />
+              <DrawerContent>
+                <DrawerCloseButton />
+                <DrawerHeader borderBottomWidth="1px" borderColor="figma.borderDefault">Drawer title</DrawerHeader>
+                <DrawerBody>
+                  <Text color="figma.fg_muted">Drawer body content. Use design system Drawer components with Figma tokens.</Text>
+                </DrawerBody>
+                <DrawerFooter borderTopWidth="1px" borderColor="figma.borderDefault">
+                  <Button colorScheme="teal" variant="outline" label="Cancel" onClick={onClose} mr={3} />
+                  <Button colorScheme="teal" label="Save" onClick={onClose} />
+                </DrawerFooter>
+              </DrawerContent>
+            </Drawer>
+          </>
+        );
+      }
+      return (
+        <PageWrapper title="Drawer" description="Slide-out panel. Uses figma.default, figma.fg, figma.borderDefault.">
+          <Section title="Default">
+            <DrawerDemo />
+          </Section>
+          <Section title="Code example">
+            <CodeBlock code={`import { Drawer, DrawerOverlay, DrawerContent, DrawerHeader, DrawerBody, DrawerFooter, DrawerCloseButton, Button } from "../design-system";
+import { useDisclosure } from "@chakra-ui/react";
+
+const { isOpen, onOpen, onClose } = useDisclosure();
+<Button onClick={onOpen}>Open</Button>
+<Drawer placement="right" isOpen={isOpen} onClose={onClose}>
+  <DrawerOverlay />
+  <DrawerContent>
+    <DrawerCloseButton />
+    <DrawerHeader>Title</DrawerHeader>
+    <DrawerBody>Content</DrawerBody>
+    <DrawerFooter>Actions</DrawerFooter>
+  </DrawerContent>
+</Drawer>`} />
+          </Section>
+        </PageWrapper>
+      );
+    }
 
     default:
       return (

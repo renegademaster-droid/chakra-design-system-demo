@@ -68,6 +68,23 @@ const PAGES = [
   { id: "spinner", label: "Spinner" },
   { id: "stack", label: "Stack" },
   { id: "text", label: "Text" },
+  { id: "textarea", label: "Textarea" },
+  { id: "tooltip", label: "Tooltip" },
+  { id: "tabs", label: "Tabs" },
+  { id: "switch", label: "Switch" },
+  { id: "select", label: "Select" },
+  { id: "progress", label: "Progress" },
+  { id: "skeleton", label: "Skeleton" },
+  { id: "table", label: "Table" },
+  { id: "kbd", label: "Kbd" },
+  { id: "code", label: "Code" },
+  { id: "close-button", label: "Close button" },
+  { id: "tag", label: "Tag" },
+  { id: "number-input", label: "Number input" },
+  { id: "stat", label: "Stat" },
+  { id: "image", label: "Image" },
+  { id: "aspect-ratio", label: "Aspect ratio" },
+  { id: "drawer", label: "Drawer" },
 ] as const;
 
 export type PageId = (typeof PAGES)[number]["id"];
