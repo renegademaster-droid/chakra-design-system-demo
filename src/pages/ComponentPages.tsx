@@ -1299,7 +1299,20 @@ import { IconButton } from "@chakra-ui/react";
         </PageWrapper>
       );
 
-    case "text":
+    case "text": {
+      const figmaFontScale = [
+        { token: "xs/font-normal", size: "xs", lineHeight: 16, label: "Extra small" },
+        { token: "sm/font-normal", size: "sm", lineHeight: 20, label: "Small" },
+        { token: "md/font-normal", size: "md", lineHeight: 24, label: "Medium" },
+        { token: "lg/font-medium", size: "lg", lineHeight: 28, weight: "medium", label: "Large (medium)" },
+        { token: "xl/font-normal", size: "xl", lineHeight: 30, label: "XL" },
+        { token: "2xl/font-normal", size: "2xl", lineHeight: 32, label: "2XL" },
+        { token: "3xl/font-normal", size: "3xl", lineHeight: 38, label: "3XL" },
+        { token: "4xl/font-normal", size: "4xl", lineHeight: 44, label: "4XL" },
+        { token: "5xl/font-normal", size: "5xl", lineHeight: 60, label: "5XL" },
+        { token: "6xl/font-normal", size: "6xl", lineHeight: 72, label: "6XL" },
+        { token: "7xl/font-normal", size: "7xl", lineHeight: 92, label: "7XL" },
+      ];
       return (
         <PageWrapper title="Text" description="Body and paragraph text.">
           <Section title="Sizes">
@@ -1308,6 +1321,28 @@ import { IconButton } from "@chakra-ui/react";
               <Text fontSize="sm">Small (sm)</Text>
               <Text fontSize="md">Medium (md)</Text>
               <Text fontSize="lg">Large (lg)</Text>
+            </VStack>
+          </Section>
+          <Section title="Typography scale (Figma tokens)">
+            <Text fontSize="sm" color="figma.fg_muted" mb={4}>
+              Font tokens from figma-tokens.ts (fonts/body, fontSizes/*, lineHeight from composite tokens).
+            </Text>
+            <VStack align="stretch" spacing={4}>
+              {figmaFontScale.map(({ token, size, lineHeight, weight, label }) => (
+                <Box key={token} py={2} borderBottomWidth="1px" borderColor="figma.borderDefault" _last={{ borderBottomWidth: 0 }}>
+                  <Text fontSize="xs" color="figma.fg_subtle" fontFamily="mono" mb={1}>
+                    {token}
+                  </Text>
+                  <Text
+                    fontSize={size}
+                    fontWeight={weight ?? "normal"}
+                    lineHeight={`${lineHeight}px`}
+                    color="figma.fg"
+                  >
+                    The quick brown fox jumps over the lazy dog. {label}.
+                  </Text>
+                </Box>
+              ))}
             </VStack>
           </Section>
           <Section title="Weights">
@@ -1334,6 +1369,7 @@ import { IconButton } from "@chakra-ui/react";
           </Section>
         </PageWrapper>
       );
+    }
 
     case "heading":
       return (

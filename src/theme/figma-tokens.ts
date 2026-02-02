@@ -273,6 +273,7 @@ export const figmaVariableDefs: FigmaVariableDefs = {
   "Radii/xl": "12",
   "Radii/2xl": "16",
   "Radii/Global_tokens/2xl": "16",
+  "Radii/Global_tokens/lg": "8",
   "Radii/3xl": "24",
   "Radii/4xl": "32",
   "Radii/full": "9999",
@@ -294,8 +295,33 @@ export const figmaVariableDefs: FigmaVariableDefs = {
   "fontSizes/7xl": "72",
   "fontWeights/normal": "400",
   "fontWeights/medium": "500",
+  // Composite typography (Figma → use for lineHeight/letterSpacing) — from get_variable_defs
+  "xs/font-normal":
+    'Font(family: "fonts/body", style: Regular, size: fontSizes/xs, weight: fontWeights/normal, lineHeight: 16, letterSpacing: 0)',
+  "sm/font-normal":
+    'Font(family: "fonts/body", style: Regular, size: fontSizes/sm, weight: fontWeights/normal, lineHeight: 20, letterSpacing: 0)',
+  "md/font-normal":
+    'Font(family: "fonts/body", style: Regular, size: fontSizes/md, weight: fontWeights/normal, lineHeight: 24, letterSpacing: 0)',
+  "lg/font-medium":
+    'Font(family: "fonts/body", style: Medium, size: fontSizes/lg, weight: fontWeights/medium, lineHeight: 28, letterSpacing: 0)',
+  "xl/font-normal":
+    'Font(family: "fonts/body", style: Regular, size: fontSizes/xl, weight: fontWeights/normal, lineHeight: 30, letterSpacing: 0)',
+  "2xl/font-normal":
+    'Font(family: "fonts/body", style: Regular, size: fontSizes/2xl, weight: fontWeights/normal, lineHeight: 32, letterSpacing: 0)',
+  "3xl/font-normal":
+    'Font(family: "fonts/body", style: Regular, size: fontSizes/3xl, weight: fontWeights/normal, lineHeight: 38, letterSpacing: 0)',
+  "4xl/font-normal":
+    'Font(family: "fonts/body", style: Regular, size: fontSizes/4xl, weight: fontWeights/normal, lineHeight: 44, letterSpacing: -0.4000000059604645)',
+  "5xl/font-normal":
+    'Font(family: "fonts/body", style: Regular, size: fontSizes/5xl, weight: fontWeights/normal, lineHeight: 60, letterSpacing: -0.4000000059604645)',
+  "6xl/font-normal":
+    'Font(family: "fonts/body", style: Regular, size: fontSizes/6xl, weight: fontWeights/normal, lineHeight: 72, letterSpacing: -0.4000000059604645)',
+  "7xl/font-normal":
+    'Font(family: "fonts/body", style: Regular, size: fontSizes/7xl, weight: fontWeights/normal, lineHeight: 92, letterSpacing: -0.4000000059604645)',
 
   // Effects (Figma → theme.shadows, theme.blur) — from get_variable_defs on effects collection
+  "Shadows/Shadows light/xs":
+    "Effect(type: DROP_SHADOW, color: #18181B1A, offset: (0, 1), radius: 2, spread: 0); Effect(type: DROP_SHADOW, color: #18181B33, offset: (0, 0), radius: 1, spread: 0)",
   "Shadows/light/sm":
     "Effect(type: DROP_SHADOW, color: #0000001a, offset: (0, 1), radius: 2, spread: 0)",
   "Shadows/light/md":
