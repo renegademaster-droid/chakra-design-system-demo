@@ -45,9 +45,11 @@ export const Card = ({
   imageSrc,
   imageAlt,
   cardVariant = "outline",
+  p,
   ...props
 }: CardProps) => {
   const hasHeaderContent = avatarSrc ?? title ?? description;
+  const bodyPadding = p ?? 5;
 
   const variantStyles = {
     outline: {
@@ -94,7 +96,7 @@ export const Card = ({
           />
         </Box>
       )}
-      <CardBody p={5}>
+      <CardBody p={bodyPadding}>
         {hasHeaderContent ? (
           <VStack align="stretch" spacing={3}>
             {avatarSrc !== undefined && (
